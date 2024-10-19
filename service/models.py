@@ -106,7 +106,7 @@ class Account(db.Model, PersistentBase):
             "email": self.email,
             "address": self.address,
             "phone_number": self.phone_number,
-            "date_joined": self.date_joined.isoformat()
+            "date_joined": self.date_joined.isoformat(),
         }
 
     def deserialize(self, data):
@@ -128,8 +128,8 @@ class Account(db.Model, PersistentBase):
                 self.date_joined = date.today()
         except KeyError as error:
             raise DataValidationError(
-                "Invalid Account: missing " +
-                error.args[0]) from error
+                "Invalid Account: missing " + error.args[0]
+            ) from error
         except TypeError as error:
             raise DataValidationError(
                 "Invalid Account: body of request contained "
